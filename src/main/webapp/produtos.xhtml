@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Produtos</title>
+</h:head>
+<h:body>
+    <h1>Cadastro de Produtos Auto Peças</h1>
+
+    <h:messages globalOnly="true" style="color:red"/>
+
+    <h:form>
+        <h:panelGrid columns="2">
+            <h:outputLabel value="Código:" />
+            <h:inputText value="#{produtoController.produto.codigo}" required="true"/>
+
+            <h:outputLabel value="Nome:" />
+            <h:inputText value="#{produtoController.produto.nome}" required="true"/>
+
+            <h:outputLabel value="Descrição:" />
+            <h:inputText value="#{produtoController.produto.descricao}"/>
+
+            <h:outputLabel value="Preço:" />
+            <h:inputText value="#{produtoController.produto.precoVenda}" required="true"/>
+
+            <h:outputLabel value="Estoque:" />
+            <h:inputText value="#{produtoController.produto.quantidadeEstoque}"/>
+        </h:panelGrid>
+
+        <h:commandButton value="Salvar"
+            rendered="#{produtoController.produto.id == null}"
+            action="#{produtoController.salvar()}"/>
+        <h:commandButton value="Atualizar"
+            rendered="#{produtoController.produto.id != null}"
+            action="#{produtoController.atualizar()}"/>
+        <h:commandButton value="Cancelar"
+            rendered="#{produtoController.produto.id != null}"
+            action="#{produtoController.cancelarEdicao()}"
+            immediate="true"/>
+    </h:form>
+
+    <h:dataTable value="#{produtoController.produtos}" var="p" border="1">
+        <h:column><f:facet name="header">Código</f:facet>#{p.codigo}</h:column>
+        <h:column><f:facet name="header">Nome</f:facet>#{p.nome}</h:column>
+        <h:column><f:facet name="header">Descrição</f:facet>#{p.descricao}</h:column>
+        <h:column><f:facet name="header">Preço</f:facet>#{p.precoVenda}</h:column>
+        <h:column><f:facet name="header">Estoque</f:facet>#{p.quantidadeEstoque}</h:column>
+        
+        <h:column>
+            <f:facet name="header">Ações</f:facet>
+            <h:form>
+                <h:commandButton value="Editar" action="#{produtoController.prepararEdicao(p)}"/>
+                <h:commandButton value="Remover" action="#{produtoController.remover(p.id)}"/>
+            </h:form>
+        </h:column>
+    </h:dataTable>
+</h:body>
+</html>
