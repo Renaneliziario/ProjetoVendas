@@ -35,7 +35,7 @@ src/main/webapp/
 - Java 17+
 - Maven 3.8+
 - PostgreSQL
-- WildFly 27+ configurado localmente
+- WildFly 23+ configurado localmente
 
 ## 🚀 Como executar
 
@@ -63,4 +63,4 @@ mvn wildfly:deploy
 
 ## 🎓 Objetivo
 
-Este projeto faz parte do meu aprendizado em desenvolvimento Java EE. O foco é entender na prática como as tecnologias da plataforma se integram: camada de apresentação (JSF), lógica de negócio (EJB/CDI) e persistência (JPA).
+Este projeto faz parte do meu aprendizado em desenvolvimento Java. O foco é entender na prática como as tecnologias da plataforma se integram: camada de apresentação (JSF), lógica de negócio (EJB/CDI) e persistência (JPA).
